@@ -1,0 +1,179 @@
+/* --- Import Google Font --- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+/* --- CSS Custom Properties (Variables) --- */
+:root {
+  --primary-color-start: #4a59a8;
+  --primary-color-end: #1e297e;
+  --background-color: #f8f9fc;
+  --form-background: #ffffff;
+  --text-color: #333;
+  --label-color: #555;
+  --border-color: #dfe7f5;
+  --border-color-focus: #4a59a8;
+  --shadow-color: rgba(74, 89, 168, 0.15);
+  --shadow-color-hover: rgba(74, 89, 168, 0.3);
+  --font-family: 'Poppins', sans-serif;
+}
+
+/* --- [FIX] Universal Box-Sizing Reset --- */
+
+/* y default, a browser calculates an element's total width like this: width + padding + border. When you set an input's width to 100% and then added padding, the input's final width became wider than its container, causing it to shift and overflow. */
+
+/* This rule tells the browser to include the padding and border inside the element's total width. Now, when you set width: 100%, the input will be exactly 100% wide, and any padding is applied inwards, keeping everything perfectly aligned. */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* --- Base Styling --- */
+body {
+  background-color: var(--background-color);
+  font-family: var(--font-family);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0; /* Added to ensure no default body margin */
+}
+
+/* --- Keyframe Animation for Entry --- */
+@keyframes fadeInSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --- Container Styling --- */
+.jobmailer-container {
+  max-width: 480px;
+  width: 100%;
+  margin: 40px 20px; /* Added horizontal margin for small screens */
+  padding: 40px;
+  background: var(--form-background);
+  border-radius: 24px;
+  box-shadow: 0 10px 30px var(--shadow-color);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: fadeInSlideUp 0.8s ease-out forwards;
+  border: 1px solid #eef2f9;
+}
+
+.jobmailer-container:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 40px var(--shadow-color-hover);
+}
+
+/* --- Title Styling --- */
+.jobmailer-title {
+  text-align: center;
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 30px;
+  background: linear-gradient(135deg, var(--primary-color-start), var(--primary-color-end));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.5px;
+}
+
+/* --- Form Styling --- */
+.jobmailer-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* New: Wrapper for input + icon */
+.input-wrapper {
+  position: relative;
+}
+
+.jobmailer-input {
+  width: 100%;
+  padding: 14px 18px;
+  font-size: 16px;
+  font-family: var(--font-family);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  outline: none;
+  transition: all 0.3s ease;
+  background: #fdfdff;
+  color: var(--text-color);
+}
+
+.jobmailer-input::placeholder {
+  color: #a0aec0;
+  font-weight: 400;
+}
+
+.jobmailer-input:focus {
+  border-color: var(--border-color-focus);
+  box-shadow: 0 0 0 4px rgba(74, 89, 168, 0.1);
+  background: #fff;
+}
+
+/* --- Button Styling --- */
+.jobmailer-button {
+  background: linear-gradient(135deg, var(--primary-color-start), var(--primary-color-end));
+  color: #ffffff;
+  padding: 16px;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 5px 15px rgba(26, 35, 126, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.jobmailer-button:hover {
+  background: linear-gradient(135deg, var(--primary-color-end), var(--primary-color-start));
+  box-shadow: 0 8px 20px rgba(26, 35, 126, 0.35);
+  transform: translateY(-3px);
+}
+
+.jobmailer-button:active {
+  transform: translateY(-1px) scale(0.98);
+  box-shadow: 0 4px 10px rgba(26, 35, 126, 0.3);
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 600px) {
+  .jobmailer-container {
+    margin: 20px;
+    padding: 25px;
+    border-radius: 20px;
+  }
+
+  .jobmailer-title {
+    font-size: 24px;
+  }
+
+  .jobmailer-input {
+    padding: 12px 16px;
+    font-size: 15px;
+  }
+
+  .jobmailer-button {
+    font-size: 15px;
+    padding: 14px;
+  }
+}
+
+/* 
+You've spotted a classic CSS layout issue. My apologies for that oversight.
+The problem happens because, by default, an element's padding is added outside of its width. So when you set width: 100% and then add padding, the input becomes wider than its container, causing that rightward shift.
+The fix is simple: we just need to tell the browser to include the padding inside the total width. I've added a small reset at the top of the CSS to apply this fix to all elements, which is a common best practice for predictable layouts.
+ I've added the box-sizing: border-box; rule to ensure everything stays perfectly aligned within the form. */

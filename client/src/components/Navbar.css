@@ -1,0 +1,24 @@
+.navbar-btns {
+  text-align: center;
+  color: #000000;
+  padding: 6px;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.nav-items {
+  text-align: center;
+}
+
+.navbar-btns:hover{
+    background: linear-gradient(135deg, var(--primary-color-start), var(--primary-color-end));
+    color: rgb(255, 255, 255);
+}
+
