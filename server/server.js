@@ -9,10 +9,12 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 dotenv.config();
 const app = express();
 
+const frontenduri=process.env.FRONTEND_URI
+
 app.use(bodyParser.json());
 app.use(
   cors({
-    origin: "http://localhost:5173", // frontend origin
+    origin:`${frontenduri}`, // frontend origin
     methods: ["GET", "POST"],
     allowedHeaders: ["Content-Type", "Authorization"],
   })
